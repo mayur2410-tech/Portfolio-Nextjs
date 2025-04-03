@@ -249,6 +249,22 @@ export default function Home() {
   ];
 
 
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+
+  useEffect(() => {
+    // Check if window is defined (Client-side only)
+    if (typeof window !== "undefined") {
+      setDimensions({ width: window.innerWidth, height: window.innerHeight });
+
+      const handleResize = () => {
+        setDimensions({ width: window.innerWidth, height: window.innerHeight });
+      };
+
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  }, []);
+
   return (
     <main className={cn("relative", theme === "dark" ? "dark" : "")}>
       {/* Background animation */}
@@ -256,104 +272,98 @@ export default function Home() {
         <div className="absolute inset-0 overflow-hidden">
           {/* Geometric shapes background */}
           <div className="h-full w-full">
-            {/* Floating circles */}
-            {Array.from({ length: 15 }).map((_, i) => (
-              <motion.div
-                key={`circle-${i}`}
-                className={cn(
-                  "absolute rounded-full",
-                  `bg-gradient-to-r ${themeColors[themeColor].primary} opacity-10 dark:opacity-20`,
-                )}
-                initial={{
-                  opacity: 0,
-                  scale: 0,
-                  x: Math.random() * window.innerWidth,
-                  y: Math.random() * window.innerHeight,
-                }}
-                animate={{
-                  opacity: [0, 0.4, 0],
-                  scale: [0, 2, 0],
-                  x: Math.random() * window.innerWidth,
-                  y: Math.random() * window.innerHeight,
-                }}
-                transition={{
-                  duration: Math.random() * 10 + 10,
-                  repeat: Number.POSITIVE_INFINITY,
-                  delay: Math.random() * 5,
-                }}
-                style={{
-                  width: Math.random() * 200 + 50,
-                  height: Math.random() * 200 + 50,
-                }}
-              />
-            ))}
+      {/* Floating Circles */}
+      {Array.from({ length: 15 }).map((_, i) => (
+        <motion.div
+          key={`circle-${i}`}
+          className={`absolute rounded-full bg-gradient-to-r ${themeColors[themeColor].primary} opacity-10 dark:opacity-20`}
+          initial={{
+            opacity: 0,
+            scale: 0,
+            x: Math.random() * dimensions.width,
+            y: Math.random() * dimensions.height,
+          }}
+          animate={{
+            opacity: [0, 0.4, 0],
+            scale: [0, 2, 0],
+            x: Math.random() * dimensions.width,
+            y: Math.random() * dimensions.height,
+          }}
+          transition={{
+            duration: Math.random() * 10 + 10,
+            repeat: Number.POSITIVE_INFINITY,
+            delay: Math.random() * 5,
+          }}
+          style={{
+            width: Math.random() * 200 + 50,
+            height: Math.random() * 200 + 50,
+          }}
+        />
+      ))}
 
-            {/* Floating squares */}
-            {Array.from({ length: 10 }).map((_, i) => (
-              <motion.div
-                key={`square-${i}`}
-                className={cn(
-                  "absolute rounded-md",
-                  `bg-gradient-to-r ${themeColors[themeColor].primary} opacity-10 dark:opacity-15`,
-                )}
-                initial={{
-                  opacity: 0,
-                  rotate: 0,
-                  x: Math.random() * window.innerWidth,
-                  y: Math.random() * window.innerHeight,
-                }}
-                animate={{
-                  opacity: [0, 0.3, 0],
-                  rotate: [0, 90, 180],
-                  x: Math.random() * window.innerWidth,
-                  y: Math.random() * window.innerHeight,
-                }}
-                transition={{
-                  duration: Math.random() * 15 + 15,
-                  repeat: Number.POSITIVE_INFINITY,
-                  delay: Math.random() * 5,
-                }}
-                style={{
-                  width: Math.random() * 100 + 30,
-                  height: Math.random() * 100 + 30,
-                }}
-              />
-            ))}
+      {/* Floating Squares */}
+      {Array.from({ length: 10 }).map((_, i) => (
+        <motion.div
+          key={`square-${i}`}
+          className={`absolute rounded-md bg-gradient-to-r ${themeColors[themeColor].primary} opacity-10 dark:opacity-15`}
+          initial={{
+            opacity: 0,
+            rotate: 0,
+            x: Math.random() * dimensions.width,
+            y: Math.random() * dimensions.height,
+          }}
+          animate={{
+            opacity: [0, 0.3, 0],
+            rotate: [0, 90, 180],
+            x: Math.random() * dimensions.width,
+            y: Math.random() * dimensions.height,
+          }}
+          transition={{
+            duration: Math.random() * 15 + 15,
+            repeat: Number.POSITIVE_INFINITY,
+            delay: Math.random() * 5,
+          }}
+          style={{
+            width: Math.random() * 100 + 30,
+            height: Math.random() * 100 + 30,
+          }}
+        />
+      ))}
 
-            {/* Floating triangles */}
-            {Array.from({ length: 8 }).map((_, i) => (
-              <motion.div
-                key={`triangle-${i}`}
-                className="absolute opacity-10 dark:opacity-15"
-                initial={{
-                  opacity: 0,
-                  rotate: 0,
-                  x: Math.random() * window.innerWidth,
-                  y: Math.random() * window.innerHeight,
-                }}
-                animate={{
-                  opacity: [0, 0.3, 0],
-                  rotate: [0, 120, 240],
-                  x: Math.random() * window.innerWidth,
-                  y: Math.random() * window.innerHeight,
-                }}
-                transition={{
-                  duration: Math.random() * 20 + 10,
-                  repeat: Number.POSITIVE_INFINITY,
-                  delay: Math.random() * 5,
-                }}
-                style={{
-                  width: 0,
-                  height: 0,
-                  borderLeft: `${Math.random() * 50 + 25}px solid transparent`,
-                  borderRight: `${Math.random() * 50 + 25}px solid transparent`,
-                  borderBottomWidth: `${Math.random() * 100 + 50}px`,
-                  borderBottomStyle: "solid",
-                  borderBottomColor: `rgba(239, 68, 68, 0.2)`,
-                }}
-              />
-            ))}
-          </div>
+      {/* Floating Triangles */}
+      {Array.from({ length: 8 }).map((_, i) => (
+        <motion.div
+          key={`triangle-${i}`}
+          className="absolute opacity-10 dark:opacity-15"
+          initial={{
+            opacity: 0,
+            rotate: 0,
+            x: Math.random() * dimensions.width,
+            y: Math.random() * dimensions.height,
+          }}
+          animate={{
+            opacity: [0, 0.3, 0],
+            rotate: [0, 120, 240],
+            x: Math.random() * dimensions.width,
+            y: Math.random() * dimensions.height,
+          }}
+          transition={{
+            duration: Math.random() * 20 + 10,
+            repeat: Number.POSITIVE_INFINITY,
+            delay: Math.random() * 5,
+          }}
+          style={{
+            width: 0,
+            height: 0,
+            borderLeft: `${Math.random() * 50 + 25}px solid transparent`,
+            borderRight: `${Math.random() * 50 + 25}px solid transparent`,
+            borderBottomWidth: `${Math.random() * 100 + 50}px`,
+            borderBottomStyle: "solid",
+            borderBottomColor: `rgba(239, 68, 68, 0.2)`,
+          }}
+        />
+      ))}
+    </div>
         </div>
       </div>
 
