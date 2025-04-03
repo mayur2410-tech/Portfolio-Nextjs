@@ -1,4 +1,5 @@
 "use client"
+import { Play, Pause, Volume2, VolumeX } from "lucide-react";
 
 import type React from "react"
 import {
@@ -12,7 +13,8 @@ import {
   SiJavascript,
   SiFigma,
   SiHtml5,
-} from "react-icons/si"
+} from "react-icons/si";
+
 
 
 import { useRef, useState, useEffect } from "react"
@@ -183,57 +185,13 @@ export default function Home() {
     }
   }
 
-  // const projects = [
-  //   {
-  //     title: "E-Commerce Platform",
-  //     description:
-  //       "A full-stack MERN application with user authentication, product management, and payment integration.",
-  //     tags: ["React", "Node.js", "MongoDB", "Express"],
-  //     category: "mern",
-  //     image: "/placeholder.svg?height=300&width=500&text=E-Commerce",
-  //   },
-  //   {
-  //     title: "Portfolio Website",
-  //     description: "A responsive portfolio website built with HTML, CSS, and JavaScript.",
-  //     tags: ["HTML", "CSS", "JavaScript"],
-  //     category: "html",
-  //     image: "/placeholder.svg?height=300&width=500&text=Portfolio",
-  //   },
-  //   {
-  //     title: "Task Management App",
-  //     description: "A React application for managing tasks with drag-and-drop functionality.",
-  //     tags: ["React", "Tailwind CSS", "Firebase"],
-  //     category: "react",
-  //     image: "/placeholder.svg?height=300&width=500&text=Task+App",
-  //   },
-  //   {
-  //     title: "Banking App UI Design",
-  //     description: "A modern UI design for a banking application created in Figma.",
-  //     tags: ["Figma", "UI/UX", "Prototype"],
-  //     category: "figma",
-  //     image: "/placeholder.svg?height=300&width=500&text=Banking+UI",
-  //   },
-  //   {
-  //     title: "RESTful API for Blog",
-  //     description: "A backend API for a blog platform with authentication and CRUD operations.",
-  //     tags: ["Node.js", "Express", "MongoDB", "REST API"],
-  //     category: "backend",
-  //     image: "/placeholder.svg?height=300&width=500&text=Blog+API",
-  //   },
-  //   {
-  //     title: "Weather Dashboard",
-  //     description: "A React application that displays weather information using a third-party API.",
-  //     tags: ["React", "API Integration", "Tailwind CSS"],
-  //     category: "react",
-  //     image: "/placeholder.svg?height=300&width=500&text=Weather+App",
-  //   },
-  // ]
+
   const projects = [
     {
       title: "Laundry Management System",
       description: "The Laundry Management System digitizes traditional laundry services, enabling users, workers, and admins to manage orders, track status, and optimize stock efficiently.",
       image: "https://github.com/mayur2410-tech/Portfolio-Website/blob/main/src/assests/laundrymanagement.png?raw=true",
-      video: "#",
+      video: "https://res.cloudinary.com/dpnlhgonl/video/upload/v1743696942/xhueufgdykk0usbkr0ro.mp4",
       technologies: ["React", "Node JS", "MongoDB","Express JS", "Tailwind CSS"],
       category: "mern",
       github: "https://github.com/mayur2410-tech/laundry_buddy",
@@ -290,17 +248,6 @@ export default function Home() {
     }
   ];
 
-  // const skills = [
-  //   { name: "HTML/CSS", level: 90 },
-  //   { name: "JavaScript", level: 85 },
-  //   { name: "React", level: 80 },
-  //   { name: "Node.js", level: 75 },
-  //   { name: "Express.js", level: 75 },
-  //   { name: "MongoDB", level: 70 },
-  //   { name: "REST API", level: 80 },
-  //   { name: "Git", level: 75 },
-  //   { name: "Tailwind CSS", level: 85 },
-  // ]
 
   return (
     <main className={cn("relative", theme === "dark" ? "dark" : "")}>
@@ -910,105 +857,8 @@ export default function Home() {
   </div>
 </section>
 
-      {/* Projects Section */}
-      {/* <section id="projects" className="py-20">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2
-              className={cn(
-                "text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r text-transparent bg-clip-text inline-block",
-                themeColors[themeColor].primary,
-              )}
-            >
-              My Projects
-            </h2>
-            <div className={cn("h-1 w-20 bg-gradient-to-r mx-auto mb-8", themeColors[themeColor].primary)}></div>
-            <p className="text-slate-700 dark:text-slate-300 max-w-2xl mx-auto">
-              Here are some of the projects I've worked on. Each project demonstrates different skills and technologies
-              I've mastered.
-            </p>
-          </motion.div>
-
-          <Tabs defaultValue="all" className="w-full mb-10">
-            <TabsList className="flex flex-wrap justify-center w-full max-w-3xl mx-auto bg-slate-100 dark:bg-slate-800 p-1 rounded-lg">
-              <TabsTrigger value="all" className="flex-1">
-                All
-              </TabsTrigger>
-              <TabsTrigger value="mern" className="flex-1">
-               MERN
-              </TabsTrigger>
-              <TabsTrigger value="react" className="flex-1">
-                React
-              </TabsTrigger>
-              <TabsTrigger value="html" className="flex-1">
-              HTML/CSS
-              </TabsTrigger>
-              <TabsTrigger value="figma" className="flex-1">
-                Figma
-              </TabsTrigger>
-              <TabsTrigger value="backend" className="flex-1">
-                Backend
-              </TabsTrigger>
-            </TabsList>
-            <TabsContent value="all" className="mt-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {projects.map((project, index) => (
-                  <motion.div
-                    key={project.title}
-                    variants={fadeInAnimationVariants}
-                    initial="initial"
-                    whileInView="animate"
-                    viewport={{ once: true }}
-                    custom={index}
-                  >
-                    <ProjectCard project={project} themeColor={themeColor} themeColors={themeColors} />
-                  </motion.div>
-                ))}
-              </div>
-            </TabsContent>
-            {["react", "html", "mern", "figma", "backend"].map((category) => (
-              <TabsContent key={category} value={category} className="mt-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {projects
-                    .filter((project) => project.category === category)
-                    .map((project, index) => (
-                      <motion.div
-                        key={project.title}
-                        variants={fadeInAnimationVariants}
-                        initial="initial"
-                        whileInView="animate"
-                        viewport={{ once: true }}
-                        custom={index}
-                      >
-                        <ProjectCard project={project} themeColor={themeColor} themeColors={themeColors} />
-                      </motion.div>
-                    ))}
-                </div>
-              </TabsContent>
-            ))}
-          </Tabs>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="text-center mt-10"
-          >
-            <Button size="lg" className={cn("bg-gradient-to-r", themeColors[themeColor].button)}>
-              <Github className="mr-2 h-4 w-4" />
-              View All Projects on GitHub
-            </Button>
-          </motion.div>
-        </div>
-      </section> */}
-
+      
+{/* project section  */}
 <section id="projects" className="py-20">
   <div className="container mx-auto px-4">
     <motion.div
@@ -1389,84 +1239,87 @@ export default function Home() {
   )
 }
 
-// function ProjectCard({ project, themeColor, themeColors }) {
-//   return (
-//     <Card
-//       className={cn(
-//         "overflow-hidden bg-white dark:bg-slate-800/50 border transition-all duration-300 transform hover:-translate-y-2",
-//         "border-slate-200 dark:border-slate-700 hover:shadow-lg",
-//       )}
-//     >
-//       <div className="h-48 relative overflow-hidden">
-//         <img src={project.image || "/placeholder.svg"} alt={project.title} className="w-full h-full object-cover" />
-//         <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-70"></div>
-//         <div className="absolute bottom-4 left-4">
-//           <h3 className="text-xl font-semibold text-white">{project.title}</h3>
-//         </div>
-//       </div>
-//       <CardContent className="p-6">
-//         <p className="text-slate-700 dark:text-slate-300 mb-4">{project.description}</p>
-//         <div className="flex flex-wrap gap-2 mt-4">
-//           {project.tags.map((tech) => (
-//             <Badge key={tag} variant="outline" className={cn(themeColors[themeColor].secondary)}>
-//               {tag}
-//             </Badge>
-//           ))}
-//         </div>
-//         <div className="mt-6 flex justify-between">
-//           <Button
-//             variant="outline"
-//             size="sm"
-//             className={cn(themeColors[themeColor].border, themeColors[themeColor].accent)}
-//           >
-//             View Details
-//           </Button>
-//           <Button
-//             size="sm"
-//             className={cn(
-//               "bg-slate-100 dark:bg-slate-700",
-//               themeColors[themeColor].hover,
-//               themeColors[themeColor].accent,
-//             )}
-//           >
-//             <Github className="h-4 w-4" />
-//           </Button>
-//         </div>
-//       </CardContent>
-//     </Card>
-//   )
-// }
+
+
+
 
 function ProjectCard({ project, themeColor, themeColors }) {
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef(null);
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (videoRef.current.paused) {
+        videoRef.current.play();
+        setIsPlaying(true);
+      } else {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      }
+    }
+  };
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted;
+      setIsMuted(videoRef.current.muted);
+    }
+  };
+
   return (
     <Card
       className={cn(
         "overflow-hidden bg-white dark:bg-slate-800/50 border transition-all duration-300 transform hover:-translate-y-2",
         "border-slate-200 dark:border-slate-700 hover:shadow-lg",
-        "h-full flex flex-col" // Added for better card height consistency
+        "h-full flex flex-col min-h-[450px]"
       )}
     >
-      <div className="h-48 relative overflow-hidden">
-        <img 
-          src={project.image} 
-          alt={project.title} 
-          className="w-full h-full object-cover"
-          onError={(e) => {
-            e.target.src = "/placeholder.svg";
-          }}
-        />
+      <div className="h-64 relative overflow-hidden">
+        {project.video ? (
+          <video
+            ref={videoRef}
+            src={project.video}
+            className="w-full h-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+        ) : (
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              e.target.src = "/placeholder.svg";
+            }}
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-70"></div>
         <div className="absolute bottom-4 left-4">
           <h3 className="text-xl font-semibold text-white">{project.title}</h3>
-        </div>
-      </div>
+         </div>
+
+         {project.video && (
+          <div className="absolute bottom-4 right-4 flex gap-2">
+            <button onClick={togglePlay} className="bg-white/80 p-2 rounded-full">
+              {isPlaying ? <Pause size={20} /> : <Play size={20} />}
+            </button>
+            <button onClick={toggleMute} className="bg-white/80 p-2 rounded-full">
+              {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
+            </button>
+          </div>
+         )}
+          </div>
+
       <CardContent className="p-6 flex-grow flex flex-col">
         <p className="text-slate-700 dark:text-slate-300 mb-4">{project.description}</p>
         <div className="flex flex-wrap gap-2 mt-auto">
           {project.technologies.map((tech) => (
-            <Badge 
-              key={tech} 
-              variant="outline" 
+            <Badge
+              key={tech}
+              variant="outline"
               className={cn(
                 "text-xs",
                 themeColors[themeColor].border,
@@ -1504,6 +1357,5 @@ function ProjectCard({ project, themeColor, themeColors }) {
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }
-
