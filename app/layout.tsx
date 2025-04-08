@@ -14,6 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+       <head>
+        <link rel="icon" href="https://github.com/mayur2410-tech/Portfolio-Website/blob/main/src/assests/profilephoto.jpg?raw=true" type="image/x-icon" />
+      </head>
+
       <body>{children}</body>
     </html>
   )
