@@ -49,8 +49,8 @@ import TypewriterComponent from "typewriter-effect"
 
 export default function Home() {
   const { toast } = useToast()
-  const [theme, setTheme] = useState<"light" | "dark">("light")
-  const [themeColor, setThemeColor] = useState<"blue" | "red" | "purple" | "green">("red")
+  const [theme, setTheme] = useState<"light" | "dark">("dark")
+  const [themeColor, setThemeColor] = useState<"blue" | "red" | "purple" | "green">("purple")
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -198,16 +198,7 @@ export default function Home() {
       demo: "https://laundry-buddy-frontend.onrender.com/",
       featured: true
     },
-    {
-      title: "API Hub",
-      description: "Unified API Explorer integrates MealDB, CocktailDB, and Harry Potter APIs for efficient browsing, recipe and character discovery, and optimized API fetching.",
-      image: "https://github.com/mayur2410-tech/Portfolio-Website/blob/main/src/assests/apihub.png?raw=true",
-      technologies: ["React","Tailwind CSS"],
-      category: "react",
-      github: "https://github.com/mayur2410-tech/REACT-JS/tree/main/react/react-4-in-1-website/4-websites",
-      demo: "https://animated-basbousa-d53885.netlify.app/",
-      featured: true
-    },
+    
     {
       title: "WholeMonkey E-commerce Website",
       description: "Developed a static clone of the Wholemonkey e-commerce website using React.",
@@ -217,6 +208,16 @@ export default function Home() {
       category: "react",
       github: "https://github.com/mayur2410-tech/REACT-JS/tree/main/react/wholemonkey-clone-using-react/vite_app",
       demo: "https://wholemonkey.netlify.app/",
+      featured: true
+    },
+    {
+      title: "API Hub",
+      description: "Unified API Explorer integrates MealDB, CocktailDB, and Harry Potter APIs for efficient browsing, recipe and character discovery, and optimized API fetching.",
+      image: "https://github.com/mayur2410-tech/Portfolio-Website/blob/main/src/assests/apihub.png?raw=true",
+      technologies: ["React","Tailwind CSS"],
+      category: "react",
+      github: "https://github.com/mayur2410-tech/REACT-JS/tree/main/react/react-4-in-1-website/4-websites",
+      demo: "https://animated-basbousa-d53885.netlify.app/",
       featured: true
     },
     {
@@ -449,19 +450,40 @@ export default function Home() {
             </Button>
 
             {/* Mobile menu button */}
-            <Button variant="outline" size="icon" className="md:hidden border-slate-200 dark:border-slate-800">
-              <span className="sr-only">Open menu</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-              </svg>
-            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" size="icon" className="md:hidden border-slate-200 dark:border-slate-800">
+                  <span className="sr-only">Open menu</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                  </svg>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem onClick={() => scrollToSection("home")}>
+                  Home
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => scrollToSection("about")}>
+                  About
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => scrollToSection("skills")}>
+                  Skills
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => scrollToSection("projects")}>
+                  Projects
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => scrollToSection("contact")}>
+                  Contact
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </motion.div>
         </div>
       </header>
@@ -505,7 +527,7 @@ export default function Home() {
                   >
                     <TypewriterComponent
                       options={{
-                        strings: ["a Mayur Waykar", "a Developer", "a Creator"],
+                        strings: [" Mayur Waykar", "a Developer", "a Creator"],
                         autoStart: true,
                         loop: true,
                         wrapperClassName: `text-transparent bg-clip-text bg-gradient-to-r ${themeColors[themeColor].primary}`,
@@ -739,9 +761,9 @@ export default function Home() {
                 <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                   <div className="flex items-center justify-between space-x-2 mb-3">
                     <h3 className="text-2xl font-bold text-slate-900 dark:text-white">B.Tech in Computer Science</h3>
-                    <time className={cn("text-sm font-semibold px-3 py-1 rounded-full", themeColors[themeColor].secondary)}>2024 - Present</time>
+                    {/* <time className={cn("text-sm font-semibold px-3 py-1 rounded-full", themeColors[themeColor].secondary)}></time> */}
                   </div>
-                  <div className={cn("text-lg font-medium mb-3", themeColors[themeColor].accent)}>Rai University</div>
+                  <div className={cn("text-lg font-medium mb-3", themeColors[themeColor].accent)}>Coding Gita X Rai University</div>
                   <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
                     Currently pursuing Bachelor's in Computer Science with focus on web development and software engineering.
                   </p>
@@ -765,7 +787,7 @@ export default function Home() {
                 <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                   <div className="flex items-center justify-between space-x-2 mb-3">
                     <h3 className="text-2xl font-bold text-slate-900 dark:text-white">Higher Secondary (HSC)</h3>
-                    <time className={cn("text-sm font-semibold px-3 py-1 rounded-full", themeColors[themeColor].secondary)}>2022 - 2024</time>
+                    {/* <time className={cn("text-sm font-semibold px-3 py-1 rounded-full", themeColors[themeColor].secondary)}>2022 - 2024</time> */}
                   </div>
                   <div className={cn("text-lg font-medium mb-3", themeColors[themeColor].accent)}>G.R.P.Sabnis</div>
                   <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
