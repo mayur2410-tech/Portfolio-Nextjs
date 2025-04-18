@@ -191,7 +191,7 @@ export default function Home() {
       title: "Laundry Management System",
       description: "The Laundry Management System digitizes traditional laundry services, enabling users, workers, and admins to manage orders, track status, and optimize stock efficiently.",
       image: "https://github.com/mayur2410-tech/Portfolio-Website/blob/main/src/assests/laundrymanagement.png?raw=true",
-      video: "https://res.cloudinary.com/dpnlhgonl/video/upload/v1743696942/xhueufgdykk0usbkr0ro.mp4",
+      video: "https://res.cloudinary.com/dpnlhgonl/video/upload/v1744996166/laundry_management_demo_dukq7l.mp4",
       technologies: ["React", "Node JS", "MongoDB","Express JS", "Tailwind CSS"],
       category: "mern",
       github: "https://github.com/mayur2410-tech/laundry_buddy",
